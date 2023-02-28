@@ -17,7 +17,7 @@ jobs:
             libgeos++-dev \
             libprotobuf-dev \
             protobuf-compiler
-          apt list --installed
+          apt list --installed | grep curl  
       - uses: actions/checkout@v2
       - name: Checkout submodules
         shell: bash
