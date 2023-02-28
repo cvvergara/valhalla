@@ -9,13 +9,19 @@ jobs:
     strategy:
         fail-fast: false
         matrix:
-          os: [ubuntu-latest, ubuntu-20.04]
+          os: [ubuntu-latest]
+          # OFF works on all
+          # ON compiles
           tools: [ON, OFF]
-          datatools: [ON, OFF]
+          # datatools ON needs spatialite
+          datatools: [OFF]
           # services ON needs libprime_server
           services: [OFF]
+          # ON  compiles, 
           ccache: [ON, OFF]
+          # ON  compiles, 
           tests: [ON, OFF]
+          benchmarks: [ON, OFF]
 
     steps:
       - name: Get dependencies
@@ -51,13 +57,14 @@ jobs:
             -DENABLE_SERVICES=${{ matrix.services }} \
             -DENABLE_CCACHE=${{ matrix.ccache }} \
             -DENABLE_TESTS=${{ matrix.tests }} \
+            -DENABLE_BENCHMARKS=${{ matrix.benchmarks }}
       - name: run build
         run: |
           cd build \
           && make -j$(nproc)
 
-      - name: test
-        if: ${{ matrix.tests  == 'ON' }}
+      - name: compile benchmark
+        if: ${{ matrix.benchmarks  == 'ON' }}
         run: |
           cd build \
           && make benchmarks
