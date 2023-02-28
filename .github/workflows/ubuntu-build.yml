@@ -11,9 +11,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y \
             curl \
-            boost \
-            protobuf \
-            geos \
+            libboost-all-dev \
+            protobuf-compiler \
+            libprotobuf-dev \
+            libgeos \
             protobuf-compiler
       - uses: actions/checkout@v2
       - name: Checkout submodules
