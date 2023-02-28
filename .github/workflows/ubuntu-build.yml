@@ -4,6 +4,13 @@ on: [push]
 jobs:
   build:
     name: Ubuntu build
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+        fail-fast: false
+        matrix:
+          tools: [ON, OFF]
+
     runs-on: ubuntu-latest
     steps:
       - name: Get dependencies
@@ -34,7 +41,7 @@ jobs:
           mkdir build && cd build \
           && cmake .. \
             -DCMAKE_BUILD_TYPE=Release \
-            -DENABLE_TOOLS=OFF \
+            -DENABLE_TOOLS=${{ matrix.tools }} \
             -DENABLE_DATA_TOOLS=OFF \
             -DENABLE_SERVICES=OFF \
             -DENABLE_CCACHE=OFF \
