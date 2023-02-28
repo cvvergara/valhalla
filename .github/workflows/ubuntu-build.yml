@@ -65,13 +65,7 @@ jobs:
             -DENABLE_CCACHE=${{ matrix.ccache }} \
             -DENABLE_TESTS=${{ matrix.tests }} \
             -DENABLE_BENCHMARKS=${{ matrix.benchmarks }}
-      - name: run build
+      - name: build
         run: |
           cd build \
           && make -j$(nproc)
-
-      - name: compile benchmark
-        if: ${{ matrix.benchmarks  == 'ON' }}
-        run: |
-          cd build \
-          && make benchmark
