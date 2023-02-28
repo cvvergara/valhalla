@@ -11,6 +11,10 @@ jobs:
         matrix:
           os: [ubuntu-latest, ubuntu-20.04]
           tools: [ON, OFF]
+          datatools: [ON, OFF]
+          services: [ON, OFF]
+          ccache: [ON, OFF]
+          tests: [ON, OFF]
 
     steps:
       - name: Get dependencies
@@ -36,16 +40,19 @@ jobs:
           auth_header="$(git config --local --get http.https://github.com/.extraheader)"
           git submodule sync --recursive
           git -c "http.extraheader=$auth_header" -c protocol.version=2 submodule update --init --force --recursive --depth=1
-      - name: Configure and run build
+      - name: Configure
         run: |
           mkdir build && cd build \
           && cmake .. \
             -DCMAKE_BUILD_TYPE=Release \
             -DENABLE_TOOLS=${{ matrix.tools }} \
-            -DENABLE_DATA_TOOLS=OFF \
-            -DENABLE_SERVICES=OFF \
-            -DENABLE_CCACHE=OFF \
-            -DENABLE_TESTS=OFF \
-            -DENABLE_BENCHMARKS=OFF \
-            -DLOGGING_LEVEL=DEBUG \
+            -DENABLE_DATA_TOOLS=${{ matrix.datatools }} \
+            -DENABLE_SERVICES=${{ matrix.services }} \
+            -DENABLE_CCACHE=${{ matrix.ccache }} \
+            -DENABLE_TESTS=${{ matrix.tests }} \
+      - name: run build
+        run: |
+          cd build \
           && make -j$(nproc)
+      - name: tests
+
