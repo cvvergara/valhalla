@@ -11,7 +11,6 @@ jobs:
         matrix:
           tools: [ON, OFF]
 
-    runs-on: ubuntu-latest
     steps:
       - name: Get dependencies
         run: |
