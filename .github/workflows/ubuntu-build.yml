@@ -18,6 +18,9 @@ jobs:
             libprotobuf-dev \
             protobuf-compiler
           apt list --installed | grep curl  
+          sudo updatedb
+          locate libcurl.so
+          locate curl.h
       - uses: actions/checkout@v2
       - name: Checkout submodules
         shell: bash
