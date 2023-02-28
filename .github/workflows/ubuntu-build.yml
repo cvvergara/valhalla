@@ -57,7 +57,7 @@ jobs:
           && make -j$(nproc)
 
       - name: test
-        if: "${{ matrix.tests }}" == "ON" 
+        if: ${{ matrix.tests  == 'ON' }}
         run: |
           cd build \
-          && make -j$(nproc)
+          && make benchmarks
