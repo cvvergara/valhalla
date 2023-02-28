@@ -12,9 +12,9 @@ jobs:
           sudo apt-get install -y \
             curl \
             libboost-all-dev \
+            libluajit-5.1-dev \
             protobuf-compiler \
             libprotobuf-dev \
-            geos-bin \
             protobuf-compiler
       - uses: actions/checkout@v2
       - name: Checkout submodules
