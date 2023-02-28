@@ -24,24 +24,31 @@ jobs:
           benchmarks: [ON, OFF]
 
     steps:
+      - uses: actions/checkout@v2
+      - name: Cache submodules
+        id: cache-third_party
+        uses: actions/cache@v3
+        with:
+          path: third_party
+          key: ${{ runner.os }}-third_party
       - name: Get dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y \
             curl libcurl4 libcurl4-gnutls-dev \
-            mlocate \
             libboost-all-dev \
             libluajit-5.1-dev \
             protobuf-compiler \
             libgeos++-dev \
             libprotobuf-dev \
             protobuf-compiler
+          #mlocate \
           #apt list --installed | grep curl  
           #sudo updatedb
           #locate libcurl.so
           #locate curl.h
-      - uses: actions/checkout@v2
       - name: Checkout submodules
+        if: steps.cache-third_party.outputs.cache-hit != 'true'
         shell: bash
         run: |
           auth_header="$(git config --local --get http.https://github.com/.extraheader)"
@@ -67,4 +74,4 @@ jobs:
         if: ${{ matrix.benchmarks  == 'ON' }}
         run: |
           cd build \
-          && make benchmarks
+          && make benchmark
