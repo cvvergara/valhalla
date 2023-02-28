@@ -9,7 +9,7 @@ jobs:
     strategy:
         fail-fast: false
         matrix:
-          os: [ubuntu-latest, ubuntu-20.04, ubuntu-18.04]
+          os: [ubuntu-latest, ubuntu-20.04]
           tools: [ON, OFF]
 
     steps:
