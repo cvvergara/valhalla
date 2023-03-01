@@ -11,12 +11,12 @@ jobs:
         matrix:
           os: [ubuntu-latest]
           tools: [OFF]
-          datatools: [OFF]
+          datatools: [ON]
           # services ON needs libprime_server
           services: [OFF]
           ccache: [OFF]
           tests: [OFF]
-          benchmarks: [ON]
+          benchmarks: [OFF]
 
 
     steps:
@@ -56,6 +56,7 @@ jobs:
         run: |
           sudo apt-get install -y \
             libspatialite-dev \
+            libluajit-5.1-dev \
             libgeos++-dev
 
       - name: Configure
