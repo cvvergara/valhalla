@@ -9,19 +9,18 @@ jobs:
     strategy:
         fail-fast: false
         matrix:
-          os: [ubuntu-latest, ubuntu-20.04]
+          os: [ubuntu-latest]
           # OFF works on all
           # ON compiles
-          tools: [OFF]
-          # datatools ON needs spatialite
-          datatools: [ON]
+          tools: [ON, OFF]
+          datatools: [ON, OFF]
           # services ON needs libprime_server
-          services: [OFF]
+          services: [ON, OFF]
           # ON  compiles, 
-          ccache: [OFF]
+          ccache: [ON, OFF]
           # ON  compiles, 
-          tests: [OFF]
-          benchmarks: [OFF]
+          tests: [ON, OFF]
+          benchmarks: [ON, OFF]
 
     steps:
       - uses: actions/checkout@v2
