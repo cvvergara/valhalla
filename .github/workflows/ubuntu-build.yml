@@ -11,10 +11,10 @@ jobs:
         matrix:
           os: [ubuntu-latest]
           tools: [OFF]
-          datatools: [ON]
+          datatools: [OFF]
           # services ON needs libprime_server
           services: [OFF]
-          ccache: [OFF]
+          ccache: [ON]
           tests: [OFF]
           benchmarks: [OFF]
 
