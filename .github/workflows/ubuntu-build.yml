@@ -10,7 +10,7 @@ jobs:
         fail-fast: false
         matrix:
           os: [ubuntu-latest]
-          tools: [OFF]
+          tools: [ON]
           datatools: [OFF]
           # services ON needs libprime_server
           services: [OFF]
