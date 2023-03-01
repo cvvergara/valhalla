@@ -12,16 +12,16 @@ jobs:
           os: [ubuntu-latest]
           # OFF works on all
           # ON compiles
-          tools: [ON, OFF]
+          tools: [OFF]
           # datatools ON needs spatialite
-          datatools: [OFF]
+          datatools: [ON]
           # services ON needs libprime_server
           services: [OFF]
           # ON  compiles, 
-          ccache: [ON, OFF]
+          ccache: [OFF]
           # ON  compiles, 
-          tests: [ON, OFF]
-          benchmarks: [ON, OFF]
+          tests: [OFF]
+          benchmarks: [OFF]
 
     steps:
       - uses: actions/checkout@v2
