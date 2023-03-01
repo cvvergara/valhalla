@@ -15,8 +15,8 @@ jobs:
           # services ON needs libprime_server
           services: [OFF]
           ccache: [OFF]
-          tests: [ON]
-          benchmarks: [OFF]
+          tests: [OFF]
+          benchmarks: [ON]
 
 
     steps:
