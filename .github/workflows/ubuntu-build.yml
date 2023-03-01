@@ -14,8 +14,8 @@ jobs:
           datatools: [OFF]
           # services ON needs libprime_server
           services: [OFF]
-          ccache: [ON]
-          tests: [OFF]
+          ccache: [OFF]
+          tests: [ON]
           benchmarks: [OFF]
 
 
