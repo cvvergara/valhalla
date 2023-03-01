@@ -9,7 +9,7 @@ jobs:
     strategy:
         fail-fast: false
         matrix:
-          os: [ubuntu-latest]
+          os: [ubuntu-latest, ubuntu-20.04]
           # OFF works on all
           # ON compiles
           tools: [OFF]
@@ -48,10 +48,10 @@ jobs:
             libboost-all-dev \
             libluajit-5.1-dev \
             protobuf-compiler \
-            libgeos++-dev \
             libprotobuf-dev \
             protobuf-compiler
           #mlocate \
+          #libgeos++-dev \
           #apt list --installed | grep curl  
           #sudo updatedb
           #locate libcurl.so
