@@ -31,10 +31,19 @@ jobs:
         with:
           path: third_party
           key: ${{ runner.os }}-third_party
+
+      - name: Checkout submodules
+        if: steps.cache-third_party.outputs.cache-hit != 'true'
+        shell: bash
+        run: |
+          auth_header="$(git config --local --get http.https://github.com/.extraheader)"
+          git submodule sync --recursive
+          git -c "http.extraheader=$auth_header" -c protocol.version=2 submodule update --init --force --recursive --depth=1
+
       - name: Get dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y \
+          sudo apt-get install -y 
             curl libcurl4 libcurl4-gnutls-dev \
             libboost-all-dev \
             libluajit-5.1-dev \
@@ -47,13 +56,12 @@ jobs:
           #sudo updatedb
           #locate libcurl.so
           #locate curl.h
-      - name: Checkout submodules
-        if: steps.cache-third_party.outputs.cache-hit != 'true'
-        shell: bash
+
+      - name: get datatools dependencies
+        if: ${{ matrix.datatools  == 'ON' }}
         run: |
-          auth_header="$(git config --local --get http.https://github.com/.extraheader)"
-          git submodule sync --recursive
-          git -c "http.extraheader=$auth_header" -c protocol.version=2 submodule update --init --force --recursive --depth=1
+          sudo apt-get install -y libspatialite-dev
+
       - name: Configure
         run: |
           mkdir build && cd build \
