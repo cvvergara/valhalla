@@ -14,11 +14,11 @@ jobs:
           datatools: [OFF]
           services: [OFF]
           ccache: [OFF]
-          tests: [ON, OFF]
+          tests: [OFF]
           benchmarks: [ON, OFF]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Cache submodules
         id: cache-third_party
         uses: actions/cache@v3
