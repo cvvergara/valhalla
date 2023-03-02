@@ -12,8 +12,8 @@ jobs:
           os: [ubuntu-20.04]
           tools: [OFF]
           datatools: [OFF]
-          services: [ON, OFF]
-          ccache: [OFF]
+          services: [OFF]
+          ccache: [ON, OFF]
           tests: [OFF]
           benchmarks: [ON, OFF]
 
