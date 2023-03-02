@@ -10,11 +10,11 @@ jobs:
         fail-fast: false
         matrix:
           os: [ubuntu-20.04]
-          tools: [OFF]
+          tools: [ON]
           datatools: [ON, OFF]
-          services: [OFF]
-          ccache: [OFF]
-          tests: [OFF]
+          services: [ON]
+          ccache: [ON]
+          tests: [ON]
           benchmarks: [ON, OFF]
 
     steps:
@@ -64,10 +64,10 @@ jobs:
           sudo add-apt-repository ppa:kevinkreiser/prime-server
           sudo apt-get update
           sudo apt-get install libprime-server0 libprime-server-dev prime-server-bin
-          sudo apt-get install -y \
-            libspatialite-dev \
-            libluajit-5.1-dev \
-            libgeos++-dev
+          #sudo apt-get install -y \
+          #  libspatialite-dev \
+          #  libluajit-5.1-dev \
+          #  libgeos++-dev
 
       - name: Configure
         run: |
