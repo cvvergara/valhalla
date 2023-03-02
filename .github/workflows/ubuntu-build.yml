@@ -11,7 +11,7 @@ jobs:
         matrix:
           os: [ubuntu-20.04]
           tools: [OFF]
-          datatools: [OFF]
+          datatools: [ON, OFF]
           services: [OFF]
           ccache: [OFF]
           tests: [OFF]
@@ -61,13 +61,13 @@ jobs:
       - name: get benchmark dependencies
         if: ${{ matrix.benchmark  == 'ON' }}
         run: |
-          #sudo add-apt-repository ppa:kevinkreiser/prime-server
-          #sudo apt-get update
-          #sudo apt-get install libprime-server0 libprime-server-dev prime-server-bin
-          sudo apt-get install -y \
-            libspatialite-dev \
-            libluajit-5.1-dev \
-            libgeos++-dev \
+          sudo add-apt-repository ppa:kevinkreiser/prime-server
+          sudo apt-get update
+          sudo apt-get install libprime-server0 libprime-server-dev prime-server-bin
+          #sudo apt-get install -y \
+          #  libgeos++-dev
+          #  libspatialite-dev \
+          #  libluajit-5.1-dev \
 
       - name: Configure
         run: |
