@@ -13,8 +13,8 @@ jobs:
           tools: [OFF]
           datatools: [OFF]
           services: [OFF]
-          ccache: [ON, OFF]
-          tests: [OFF]
+          ccache: [OFF]
+          tests: [ON, OFF]
           benchmarks: [ON, OFF]
 
     steps:
