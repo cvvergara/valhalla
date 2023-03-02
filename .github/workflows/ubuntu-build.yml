@@ -9,7 +9,7 @@ jobs:
     strategy:
         fail-fast: false
         matrix:
-          os: [ubuntu-latest]
+          os: [ubuntu-20.04]
           tools: [OFF]
           datatools: [OFF]
           # services ON needs libprime_server
@@ -58,6 +58,13 @@ jobs:
             libspatialite-dev \
             libluajit-5.1-dev \
             libgeos++-dev
+
+      - name: get services dependencies
+        if: ${{ matrix.services  == 'ON' }}
+        run: |
+          sudo add-apt-repository ppa:kevinkreiser/prime-server
+          sudo apt-get update
+          sudo apt-get install libprime-server0 libprime-server-dev prime-server-bin
 
       - name: Configure
         run: |
