@@ -10,12 +10,12 @@ jobs:
         fail-fast: false
         matrix:
           os: [ubuntu-20.04]
-          tools: [OFF]
+          tools: [ON, OFF]
           datatools: [OFF]
           services: [OFF]
           ccache: [OFF]
           tests: [OFF]
-          benchmarks: [OFF]
+          benchmarks: [ON, OFF]
 
     steps:
       - uses: actions/checkout@v2
