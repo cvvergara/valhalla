@@ -16,6 +16,9 @@ jobs:
           ccache: [ON]
           tests: [ON]
           benchmarks: [ON, OFF]
+          exclude:
+            - datatools: ON
+              benchmarks: ON
 
     steps:
       - uses: actions/checkout@v3
@@ -61,9 +64,9 @@ jobs:
       - name: get benchmark dependencies
         if: ${{ matrix.benchmarks  == 'ON' }}
         run: |
-          sudo add-apt-repository ppa:kevinkreiser/prime-server
+          #sudo add-apt-repository ppa:kevinkreiser/prime-server
           sudo apt-get update
-          sudo apt-get install libprime-server0 libprime-server-dev prime-server-bin
+          #sudo apt-get install libprime-server0 libprime-server-dev prime-server-bin
           #sudo apt-get install -y \
           #  libspatialite-dev \
           #  libluajit-5.1-dev \
