@@ -10,14 +10,12 @@ jobs:
         fail-fast: false
         matrix:
           os: [ubuntu-20.04]
-          tools: [OFF]
-          datatools: [OFF]
-          # services ON needs libprime_server
+          tools: [ON]
+          datatools: [ON]
           services: [ON]
-          ccache: [OFF]
-          tests: [OFF]
-          benchmarks: [OFF]
-
+          ccache: [ON]
+          tests: [ON]
+          benchmarks: [ON]
 
     steps:
       - uses: actions/checkout@v2
@@ -44,12 +42,6 @@ jobs:
             libboost-all-dev \
             libprotobuf-dev \
             protobuf-compiler
-          #libluajit-5.1-dev \
-          #mlocate \
-          #apt list --installed | grep curl  
-          #sudo updatedb
-          #locate libcurl.so
-          #locate curl.h
 
       - name: get datatools dependencies
         if: ${{ matrix.datatools  == 'ON' }}
