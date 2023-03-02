@@ -59,7 +59,7 @@ jobs:
           sudo apt-get install libprime-server0 libprime-server-dev prime-server-bin
 
       - name: get benchmark dependencies
-        if: ${{ matrix.benchmark  == 'ON' }}
+        if: ${{ matrix.benchmarks  == 'ON' }}
         run: |
           sudo add-apt-repository ppa:kevinkreiser/prime-server
           sudo apt-get update
