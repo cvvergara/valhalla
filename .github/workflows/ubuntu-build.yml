@@ -11,8 +11,8 @@ jobs:
         matrix:
           os: [ubuntu-20.04]
           tools: [OFF]
-          datatools: [ON, OFF]
-          services: [OFF]
+          datatools: [OFF]
+          services: [ON, OFF]
           ccache: [OFF]
           tests: [OFF]
           benchmarks: [ON, OFF]
