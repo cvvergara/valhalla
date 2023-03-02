@@ -65,9 +65,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install libprime-server0 libprime-server-dev prime-server-bin
           sudo apt-get install -y \
-            libgeos++-dev
             libspatialite-dev \
             libluajit-5.1-dev \
+            libgeos++-dev
 
       - name: Configure
         run: |
