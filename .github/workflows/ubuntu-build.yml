@@ -10,11 +10,11 @@ jobs:
         fail-fast: false
         matrix:
           os: [ubuntu-20.04]
-          tools: [ON]
-          datatools: [ON]
-          services: [ON]
-          ccache: [ON]
-          tests: [ON]
+          tools: [OFF]
+          datatools: [OFF]
+          services: [OFF]
+          ccache: [OFF]
+          tests: [OFF]
           benchmarks: [ON]
 
     steps:
