@@ -58,12 +58,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install libprime-server0 libprime-server-dev prime-server-bin
 
-      - name: get benchmark dependencies
-        if: ${{ matrix.benchmarks  == 'ON' && matrix.datatools  == 'ON'}}
-        run: |
-          mkdir -p build && cd build \
-          && make utrecht_tiles
-
       - name: Configure
         run: |
           mkdir -p build && cd build \
@@ -75,6 +69,13 @@ jobs:
             -DENABLE_CCACHE=${{ matrix.ccache }} \
             -DENABLE_TESTS=${{ matrix.tests }} \
             -DENABLE_BENCHMARKS=${{ matrix.benchmarks }}
+
+      - name: get benchmark dependencies
+        if: ${{ matrix.benchmarks  == 'ON' && matrix.datatools  == 'ON'}}
+        run: |
+          mkdir -p build && cd build \
+          && make utrecht_tiles
+
       - name: build
         run: |
           cd build \
