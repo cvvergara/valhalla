@@ -62,7 +62,7 @@ jobs:
         if: ${{ matrix.benchmarks  == 'ON' && matrix.datatools  == 'ON'}}
         run: |
           mkdir -p build && cd build \
-          make utrecht_tiles
+          && make utrecht_tiles
 
       - name: Configure
         run: |
