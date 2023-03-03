@@ -44,7 +44,7 @@ jobs:
             protobuf-compiler
 
       - name: get datatools dependencies
-        if: ${{ matrix.datatools  == 'ON' }}
+        if: ${{ matrix.datatools  == 'ON'  && matrix.benchmarks  == 'ON' }}
         run: |
           sudo apt-get install -y \
             libspatialite-dev \
