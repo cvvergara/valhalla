@@ -52,7 +52,7 @@ jobs:
             libluajit-5.1-dev \
             libgeos++-dev
 
-      - name: get datatools dependencies
+      - name: get benchmarks dependencies when datatools is ON
         if: ${{ matrix.datatools  == 'ON' && matrix.benchmarks  == 'ON' }}
         run: |
           sudo apt-get update
@@ -85,7 +85,7 @@ jobs:
         if: ${{ matrix.benchmarks  == 'ON' && matrix.datatools  == 'ON'}}
         run: |
           mkdir -p build && cd build \
-          && make utrecht_tiles
+          && make -j$(nproc) utrecht_tiles
 
       - name: build
         run: |
