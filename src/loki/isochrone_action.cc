@@ -44,12 +44,12 @@ void loki_worker_t::init_isochrones(Api& request) {
   // check that the number of contours is ok
   if (options.contours_size() < 1) {
     throw valhalla_exception_t{113};
-  } else if (options.contours_size() > max_contours) {
+  } else if (static_cast<size_t>(options.contours_size()) > max_contours) {
     throw valhalla_exception_t{152, std::to_string(max_contours)};
   }
 
   // check the contour metrics
-  for (auto& contour : options.contours()) {
+  for (const auto& contour : options.contours()) {
     if (contour.has_time_case() && contour.time() > max_contour_min)
       throw valhalla_exception_t{151, std::to_string(max_contour_min)};
     if (contour.has_distance_case() && contour.distance() > max_contour_km)
@@ -66,7 +66,7 @@ void loki_worker_t::isochrones(Api& request) {
   init_isochrones(request);
   auto& options = *request.mutable_options();
   // check that location size does not exceed max
-  if (options.locations_size() > max_locations.find("isochrone")->second) {
+  if (static_cast<size_t>(options.locations_size()) > max_locations.find("isochrone")->second) {
     throw valhalla_exception_t{150, std::to_string(max_locations.find("isochrone")->second)};
   };
 
