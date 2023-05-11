@@ -1,8 +1,8 @@
 #include <cstdint>
 
-#include <filesystem>
 #include "mjolnir/graphvalidator.h"
 #include "statistics.h"
+#include <filesystem>
 
 #include <boost/format.hpp>
 #include <boost/property_tree/ptree.hpp>
