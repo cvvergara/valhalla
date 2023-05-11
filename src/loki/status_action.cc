@@ -3,8 +3,8 @@
 #include "baldr/tilehierarchy.h"
 #include "config.h"
 #include "loki/worker.h"
-#include "proto/status.pb.h"
 #include "midgard/util.h"
+#include "proto/status.pb.h"
 
 using namespace valhalla::baldr;
 
