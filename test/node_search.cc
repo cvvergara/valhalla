@@ -17,10 +17,10 @@
 namespace vm = valhalla::midgard;
 namespace vb = valhalla::baldr;
 
-#include <filesystem>
 #include "mjolnir/directededgebuilder.h"
 #include "mjolnir/graphtilebuilder.h"
 #include "mjolnir/graphvalidator.h"
+#include <filesystem>
 
 namespace vj = valhalla::mjolnir;
 
