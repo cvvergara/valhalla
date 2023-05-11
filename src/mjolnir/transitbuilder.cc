@@ -17,10 +17,10 @@
 #include "baldr/graphreader.h"
 #include "baldr/graphtile.h"
 #include "baldr/tilehierarchy.h"
-#include <filesystem>
 #include "midgard/distanceapproximator.h"
 #include "midgard/logging.h"
 #include "midgard/util.h"
+#include <filesystem>
 
 using namespace valhalla::midgard;
 using namespace valhalla::baldr;
@@ -538,7 +538,8 @@ void TransitBuilder::Build(const boost::property_tree::ptree& pt) {
   // Bail if nothing
   auto hierarchy_properties = pt.get_child("mjolnir");
   auto transit_dir = hierarchy_properties.get_optional<std::string>("transit_dir");
-  if (!transit_dir || !std::filesystem::exists(*transit_dir) || !std::filesystem::is_directory(*transit_dir)) {
+  if (!transit_dir || !std::filesystem::exists(*transit_dir) ||
+      !std::filesystem::is_directory(*transit_dir)) {
     LOG_INFO("Transit directory not found. Transit will not be added.");
     return;
   }
@@ -548,7 +549,7 @@ void TransitBuilder::Build(const boost::property_tree::ptree& pt) {
   GraphReader reader(hierarchy_properties);
   auto local_level = TileHierarchy::levels().back().level;
   if (std::filesystem::is_directory(*transit_dir + std::to_string(local_level + 1) +
-                               std::filesystem::path::preferred_separator)) {
+                                    std::filesystem::path::preferred_separator)) {
     std::filesystem::recursive_directory_iterator transit_file_itr(
         *transit_dir + std::to_string(local_level + 1) + std::filesystem::path::preferred_separator),
         end_file_itr;
