@@ -1,6 +1,6 @@
-#include <filesystem>
 #include "src/baldr/incident_singleton.h"
 #include "test.h"
+#include <filesystem>
 
 using namespace valhalla;
 
@@ -136,8 +136,10 @@ TEST_F(incident_loading, watch) {
     auto snake_eyes_name = scratch_dir + baldr::GraphTile::FileSuffix(snake_eyes, ".pbf");
     baldr::GraphId box_cars{66, 2, 0};
     auto box_cars_name = scratch_dir + baldr::GraphTile::FileSuffix(box_cars, ".pbf");
-    ASSERT_TRUE(std::filesystem::create_directories(std::filesystem::path(snake_eyes_name).parent_path()));
-    ASSERT_TRUE(std::filesystem::create_directories(std::filesystem::path(box_cars_name).parent_path()));
+    ASSERT_TRUE(
+        std::filesystem::create_directories(std::filesystem::path(snake_eyes_name).parent_path()));
+    ASSERT_TRUE(
+        std::filesystem::create_directories(std::filesystem::path(box_cars_name).parent_path()));
     midgard::sequence<uint64_t> log(log_path, true, 1);
 
     // if its a static tileset we must preload the changelog before the watch function maps the file
@@ -319,7 +321,8 @@ TEST_F(incident_loading, get) {
   // setup some data for it to get
   baldr::GraphId box_cars{66, 2, 0};
   auto box_cars_name = scratch_dir + baldr::GraphTile::FileSuffix(box_cars, ".pbf");
-  ASSERT_TRUE(std::filesystem::create_directories(std::filesystem::path(box_cars_name).parent_path()));
+  ASSERT_TRUE(
+      std::filesystem::create_directories(std::filesystem::path(box_cars_name).parent_path()));
   IncidentsTile box_cars_tile;
   auto* loc = box_cars_tile.mutable_locations()->Add();
   loc->set_edge_index(12);
