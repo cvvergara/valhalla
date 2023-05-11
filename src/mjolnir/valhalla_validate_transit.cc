@@ -8,7 +8,7 @@
 #include "baldr/graphid.h"
 #include "baldr/rapidjson_utils.h"
 #include "config.h"
-#include "filesystem.h"
+#include <filesystem>
 #include "midgard/aabb2.h"
 #include "midgard/logging.h"
 #include "midgard/point2.h"
@@ -18,7 +18,7 @@
 
 using namespace valhalla::mjolnir;
 
-filesystem::path config_file_path;
+std::filesystem::path config_file_path;
 
 bool ParseArguments(int argc, char* argv[]) {
   try {
@@ -49,8 +49,8 @@ bool ParseArguments(int argc, char* argv[]) {
     }
 
     if (result.count("config") &&
-        filesystem::is_regular_file(config_file_path =
-                                        filesystem::path(result["config"].as<std::string>()))) {
+        std::filesystem::is_regular_file(config_file_path =
+                                        std::filesystem::path(result["config"].as<std::string>()))) {
       return true;
     } else {
       std::cerr << "Configuration file is required\n\n" << options.help() << "\n\n";
