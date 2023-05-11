@@ -512,8 +512,8 @@ int main(int argc, char* argv[]) {
 
     // parse the config
     if (result.count("config") &&
-        std::filesystem::is_regular_file(config_file_path =
-                                        std::filesystem::path(result["config"].as<std::string>()))) {
+        std::filesystem::is_regular_file(
+            config_file_path = std::filesystem::path(result["config"].as<std::string>()))) {
       config = config_file_path.string();
     } else {
       std::cerr << "Configuration file is required\n\n" << options.help() << "\n\n";
