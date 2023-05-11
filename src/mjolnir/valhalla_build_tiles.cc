@@ -7,10 +7,10 @@
 
 #include "baldr/rapidjson_utils.h"
 #include "config.h"
-#include <filesystem>
 #include "midgard/logging.h"
 #include "midgard/util.h"
 #include "mjolnir/util.h"
+#include <filesystem>
 
 using namespace valhalla::mjolnir;
 
