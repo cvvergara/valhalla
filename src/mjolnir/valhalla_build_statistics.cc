@@ -25,7 +25,7 @@
 #include "baldr/graphreader.h"
 #include "baldr/nodeinfo.h"
 #include "baldr/tilehierarchy.h"
-#include "filesystem.h"
+#include <filesystem>
 #include "midgard/aabb2.h"
 #include "midgard/distanceapproximator.h"
 #include "midgard/logging.h"
@@ -35,7 +35,7 @@ using namespace valhalla::midgard;
 using namespace valhalla::baldr;
 using namespace valhalla::mjolnir;
 
-filesystem::path config_file_path;
+std::filesystem::path config_file_path;
 
 namespace {
 
@@ -597,8 +597,8 @@ bool ParseArguments(int argc, char* argv[]) {
     }
 
     if (result.count("config") &&
-        filesystem::is_regular_file(config_file_path =
-                                        filesystem::path(result["config"].as<std::string>()))) {
+        std::filesystem::is_regular_file(config_file_path =
+                                        std::filesystem::path(result["config"].as<std::string>()))) {
       return true;
     } else {
       std::cerr << "Configuration file is required\n\n" << options.help() << "\n\n";
