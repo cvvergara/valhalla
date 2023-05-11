@@ -3,8 +3,8 @@
 #include "baldr/directededge.h"
 #include "baldr/graphconstants.h"
 #include "baldr/rapidjson_utils.h"
-#include <filesystem>
 #include "midgard/logging.h"
+#include <filesystem>
 
 #include <array>
 #include <cstdint>
