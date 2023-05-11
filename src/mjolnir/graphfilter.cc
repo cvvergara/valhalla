@@ -11,7 +11,7 @@
 #include "baldr/graphreader.h"
 #include "baldr/graphtile.h"
 #include "baldr/tilehierarchy.h"
-#include "filesystem.h"
+#include <filesystem>
 #include "midgard/encoded.h"
 #include "midgard/logging.h"
 #include "midgard/pointll.h"
@@ -201,7 +201,7 @@ void FilterTiles(GraphReader& reader,
     } else {
       // Remove the tile - all nodes and edges were filtered
       std::string file_location =
-          reader.tile_dir() + filesystem::path::preferred_separator + GraphTile::FileSuffix(tile_id);
+          reader.tile_dir() + std::filesystem::path::preferred_separator + GraphTile::FileSuffix(tile_id);
       remove(file_location.c_str());
       LOG_INFO("Remove file: " + file_location + " all edges were filtered");
     }
