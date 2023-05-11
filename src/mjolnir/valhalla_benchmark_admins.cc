@@ -27,7 +27,6 @@
 #include "baldr/rapidjson_utils.h"
 #include "baldr/tilehierarchy.h"
 #include "config.h"
-#include <filesystem>
 #include "midgard/aabb2.h"
 #include "midgard/constants.h"
 #include "midgard/distanceapproximator.h"
@@ -35,6 +34,7 @@
 #include "midgard/pointll.h"
 #include "midgard/util.h"
 #include "mjolnir/util.h"
+#include <filesystem>
 
 using namespace valhalla::midgard;
 using namespace valhalla::baldr;
@@ -223,8 +223,8 @@ bool ParseArguments(int argc, char* argv[]) {
     }
 
     if (result.count("config") &&
-        std::filesystem::is_regular_file(config_file_path =
-                                        std::filesystem::path(result["config"].as<std::string>()))) {
+        std::filesystem::is_regular_file(
+            config_file_path = std::filesystem::path(result["config"].as<std::string>()))) {
       return true;
     } else {
       std::cerr << "Configuration file is required\n\n" << options.help() << "\n\n";
