@@ -2,7 +2,6 @@
 #include "baldr/graphid.h"
 #include "baldr/graphreader.h"
 #include "baldr/rapidjson_utils.h"
-#include <filesystem>
 #include "loki/worker.h"
 #include "midgard/constants.h"
 #include "midgard/encoded.h"
@@ -15,6 +14,7 @@
 #include "thor/worker.h"
 #include "tyr/actor.h"
 #include "tyr/serializers.h"
+#include <filesystem>
 
 #include "gurka.h"
 #include "test.h"
