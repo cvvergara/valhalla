@@ -12,7 +12,7 @@
 #include "baldr/graphid.h"
 #include "baldr/graphreader.h"
 #include "baldr/rapidjson_utils.h"
-#include "filesystem.h"
+#include <filesystem>
 #include "loki/worker.h"
 #include "midgard/constants.h"
 #include "midgard/encoded.h"
