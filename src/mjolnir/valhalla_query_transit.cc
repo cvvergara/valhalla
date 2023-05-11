@@ -17,11 +17,11 @@
 #include "baldr/graphreader.h"
 #include "baldr/tilehierarchy.h"
 #include "config.h"
-#include <filesystem>
 #include "midgard/logging.h"
 #include "midgard/util.h"
 #include "mjolnir/servicedays.h"
 #include "valhalla/proto/transit.pb.h"
+#include <filesystem>
 
 using namespace valhalla::midgard;
 using namespace valhalla::baldr;
@@ -425,7 +425,8 @@ int main(int argc, char* argv[]) {
 
   // Bail if no transit dir
   auto transit_dir = pt.get_optional<std::string>("mjolnir.transit_dir");
-  if (!transit_dir || !std::filesystem::exists(*transit_dir) || !std::filesystem::is_directory(*transit_dir)) {
+  if (!transit_dir || !std::filesystem::exists(*transit_dir) ||
+      !std::filesystem::is_directory(*transit_dir)) {
     LOG_INFO("Transit directory not found.");
     return 0;
   }
