@@ -8,7 +8,6 @@
 
 #include "baldr/graphconstants.h"
 #include "baldr/graphreader.h"
-#include <filesystem>
 #include "midgard/logging.h"
 #include "midgard/pointll.h"
 #include "midgard/polyline2.h"
@@ -17,6 +16,7 @@
 #include "mjolnir/util.h"
 #include "skadi/sample.h"
 #include "skadi/util.h"
+#include <filesystem>
 
 using namespace valhalla::midgard;
 using namespace valhalla::baldr;
