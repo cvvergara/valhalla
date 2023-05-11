@@ -17,9 +17,9 @@
 #include "baldr/graphreader.h"
 #include "baldr/graphtile.h"
 #include "baldr/tilehierarchy.h"
-#include <filesystem>
 #include "midgard/logging.h"
 #include "midgard/sequence.h"
+#include <filesystem>
 
 using namespace valhalla::midgard;
 using namespace valhalla::baldr;
@@ -474,7 +474,7 @@ bool ValidateTransit::Validate(const boost::property_tree::ptree& pt,
     GraphReader reader(hierarchy_properties);
     auto transit_level = TileHierarchy::GetTransitLevel().level;
     if (std::filesystem::is_directory(*transit_dir + std::to_string(transit_level) +
-                                 std::filesystem::path::preferred_separator)) {
+                                      std::filesystem::path::preferred_separator)) {
       std::filesystem::recursive_directory_iterator transit_file_itr(
           *transit_dir + std::to_string(transit_level) + std::filesystem::path::preferred_separator),
           end_file_itr;
