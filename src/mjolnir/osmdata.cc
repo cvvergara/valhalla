@@ -5,10 +5,10 @@
 
 #include <boost/algorithm/string.hpp>
 
-#include <filesystem>
 #include "midgard/logging.h"
 #include "mjolnir/osmdata.h"
 #include "mjolnir/util.h"
+#include <filesystem>
 
 using namespace valhalla::mjolnir;
 
