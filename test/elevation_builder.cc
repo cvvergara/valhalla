@@ -10,7 +10,6 @@
 
 #include "baldr/curl_tilegetter.h"
 #include "baldr/tilehierarchy.h"
-#include <filesystem>
 #include "midgard/pointll.h"
 #include "midgard/sequence.h"
 #include "mjolnir/elevationbuilder.h"
@@ -20,6 +19,7 @@
 #include "pixels.h"
 #include "skadi/sample.h"
 #include "tile_server.h"
+#include <filesystem>
 
 namespace {
 // meters to resample shape to.
@@ -511,7 +511,8 @@ TEST(ElevationBuilder, compare_applied_elevations) {
 
   auto url{"127.0.0.1:38004/route-tile/v1/{tilePath}?version=%version&access_token=%token"};
   auto elev_storage_dir{"test/data/elevation_dst/"};
-  ASSERT_TRUE(std::filesystem::create_directories(elev_storage_dir)) << "Failed to create " << src_path;
+  ASSERT_TRUE(std::filesystem::create_directories(elev_storage_dir))
+      << "Failed to create " << src_path;
 
   apply_elevations(online_dir, elev_storage_dir, url, elevation_local_src);
   ASSERT_FALSE(are_dirs_equal(tile_dst, online_dir));
