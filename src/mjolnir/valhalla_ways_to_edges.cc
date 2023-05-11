@@ -17,8 +17,8 @@
 #include "baldr/graphreader.h"
 #include "baldr/graphtile.h"
 #include "baldr/tilehierarchy.h"
-#include <filesystem>
 #include "midgard/logging.h"
+#include <filesystem>
 
 using namespace valhalla::baldr;
 using namespace valhalla::midgard;
