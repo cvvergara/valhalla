@@ -1,8 +1,10 @@
+#include <filesystem>
+
 #include "baldr/tilehierarchy.h"
 #include "config.h"
-#include "filesystem.h"
 #include "loki/worker.h"
 #include "proto/status.pb.h"
+#include "midgard/util.h"
 
 using namespace valhalla::baldr;
 
@@ -20,10 +22,11 @@ auto get_graphtile(const std::shared_ptr<GraphReader>& reader) {
   return tile;
 }
 
-time_t get_tileset_last_modified(const std::shared_ptr<GraphReader>& reader) {
+std::time_t get_tileset_last_modified(const std::shared_ptr<GraphReader>& reader) {
   auto path = reader->GetTileSetLocation();
   try {
-    return std::chrono::system_clock::to_time_t(filesystem::last_write_time(path));
+    auto ftime = std::filesystem::last_write_time(path);
+    return valhalla::midgard::to_time_t(ftime);
   } catch (...) {}
   return 0;
 }
