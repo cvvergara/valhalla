@@ -19,11 +19,11 @@
 #include "baldr/graphreader.h"
 #include "baldr/predictedspeeds.h"
 #include "baldr/rapidjson_utils.h"
-#include <filesystem>
 #include "midgard/logging.h"
 #include "midgard/util.h"
 #include "mjolnir/graphtilebuilder.h"
 #include "mjolnir/util.h"
+#include <filesystem>
 
 #include "config.h"
 
@@ -164,7 +164,8 @@ void update_tile(const std::string& tile_dir,
                  const GraphId& tile_id,
                  const std::unordered_map<uint32_t, TrafficSpeeds>& speeds,
                  stats& stat) {
-  auto tile_path = tile_dir + std::filesystem::path::preferred_separator + GraphTile::FileSuffix(tile_id);
+  auto tile_path =
+      tile_dir + std::filesystem::path::preferred_separator + GraphTile::FileSuffix(tile_id);
   if (!std::filesystem::exists(tile_path)) {
     LOG_ERROR("No tile at " + tile_path);
     return;
