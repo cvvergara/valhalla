@@ -23,8 +23,8 @@
 
 #include <boost/algorithm/string.hpp>
 
-#include <filesystem>
 #include "microtar.h"
+#include <filesystem>
 
 namespace {
 // TODO: this should support boost::property_tree::path
