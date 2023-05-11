@@ -197,7 +197,7 @@ TEST(GtfsExample, WriteGtfs) {
   std::string f2_path = gtfs_dir + f2_name;
   for (const auto& f : {"toronto_1", "toronto_2"}) {
     std::filesystem::create_directories(pt.get<std::string>("mjolnir.transit_feeds_dir") +
-                                   std::filesystem::path::preferred_separator + f);
+                                        std::filesystem::path::preferred_separator + f);
   }
 
   // write agency.txt
@@ -735,7 +735,8 @@ TEST(GtfsExample, MakeTile) {
   map = gurka::buildtiles(layout, ways, {}, {}, pt);
 
   // files are already going to be written from
-  std::filesystem::recursive_directory_iterator transit_file_itr(pt.get<std::string>("mjolnir.tile_dir"));
+  std::filesystem::recursive_directory_iterator transit_file_itr(
+      pt.get<std::string>("mjolnir.tile_dir"));
   std::filesystem::recursive_directory_iterator end_file_itr;
 
   GraphReader reader(pt.get_child("mjolnir"));
