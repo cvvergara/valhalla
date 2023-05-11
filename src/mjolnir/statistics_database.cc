@@ -3,9 +3,9 @@
 
 #include <boost/property_tree/ptree.hpp>
 
-#include <filesystem>
 #include "midgard/logging.h"
 #include "mjolnir/util.h"
+#include <filesystem>
 
 using namespace valhalla::midgard;
 using namespace valhalla::baldr;
