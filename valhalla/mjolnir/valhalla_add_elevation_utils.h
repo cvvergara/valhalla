@@ -9,8 +9,8 @@
 #include "baldr/graphid.h"
 #include "baldr/graphreader.h"
 #include "baldr/graphtile.h"
-#include <filesystem>
 #include "midgard/logging.h"
+#include <filesystem>
 
 namespace valhalla {
 namespace mjolnir {
