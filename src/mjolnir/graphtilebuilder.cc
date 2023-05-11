@@ -230,7 +230,7 @@ GraphTileBuilder::GraphTileBuilder(const std::string& tile_dir,
 void GraphTileBuilder::StoreTileData() {
   // Get the name of the file
   std::filesystem::path filename(tile_dir_ + std::filesystem::path::preferred_separator +
-                            GraphTile::FileSuffix(header_builder_.graphid()));
+                                 GraphTile::FileSuffix(header_builder_.graphid()));
 
   // Make sure the directory exists on the system
   if (!std::filesystem::exists(filename.parent_path())) {
@@ -409,8 +409,8 @@ void GraphTileBuilder::StoreTileData() {
 void GraphTileBuilder::Update(const std::vector<NodeInfo>& nodes,
                               const std::vector<DirectedEdge>& directededges) {
   // Get the name of the file
-  std::filesystem::path filename =
-      tile_dir_ + std::filesystem::path::preferred_separator + GraphTile::FileSuffix(header_->graphid());
+  std::filesystem::path filename = tile_dir_ + std::filesystem::path::preferred_separator +
+                                   GraphTile::FileSuffix(header_->graphid());
 
   // Make sure the directory exists on the system
   if (!std::filesystem::exists(filename.parent_path())) {
@@ -1206,7 +1206,7 @@ void GraphTileBuilder::UpdatePredictedSpeeds(const std::vector<DirectedEdge>& di
 
   // Get the name of the file
   std::filesystem::path filename = tile_dir_ + std::filesystem::path::preferred_separator +
-                              GraphTile::FileSuffix(header_builder_.graphid());
+                                   GraphTile::FileSuffix(header_builder_.graphid());
 
   // Make sure the directory exists on the system
   if (!std::filesystem::exists(filename.parent_path()))
