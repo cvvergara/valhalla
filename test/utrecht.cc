@@ -1,4 +1,4 @@
-#include "filesystem.h"
+#include <filesystem>
 #include "midgard/sequence.h"
 #include "mjolnir/osmnode.h"
 #include "mjolnir/pbfgraphparser.h"
@@ -233,12 +233,12 @@ public:
   }
 
   void TearDown() override {
-    filesystem::remove(ways_file);
-    filesystem::remove(way_nodes_file);
-    filesystem::remove(access_file);
-    filesystem::remove(from_restriction_file);
-    filesystem::remove(to_restriction_file);
-    filesystem::remove(bss_file);
+    std::filesystem::remove(ways_file);
+    std::filesystem::remove(way_nodes_file);
+    std::filesystem::remove(access_file);
+    std::filesystem::remove(from_restriction_file);
+    std::filesystem::remove(to_restriction_file);
+    std::filesystem::remove(bss_file);
   }
 };
 
