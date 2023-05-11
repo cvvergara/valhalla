@@ -1,12 +1,12 @@
 #include <filesystem>
 
+#include "midgard/util.h"
 #include <algorithm>
 #include <fstream>
 #include <string>
 #include <sys/stat.h>
 #include <thread>
 #include <vector>
-#include "midgard/util.h"
 
 #include "test.h"
 
@@ -111,7 +111,7 @@ TEST(Filesystem, remove_any) {
 
 TEST(Filesystem, parent_path) {
   std::vector<std::filesystem::path> in{{"/"},   {"/foo/bar"}, {"/foo/../"}, {"/foo/bar/../f"},
-                                   {"./f"}, {"foo/bar/f"}};
+                                        {"./f"}, {"foo/bar/f"}};
   std::vector<std::filesystem::path> out{
       {""}, {"/foo"}, {"/foo/.."}, {"/foo/bar/.."}, {"."}, {"foo/bar"},
   };
@@ -128,7 +128,7 @@ TEST(Filesystem, extension) {
          {"/foo/.hidden"},      {"/foo/..bar"},       {"/foo/bar.baz.qux"}, {"..."},
          {"/baz/.foo.bar"}};
   std::vector<std::filesystem::path> out{{".txt"}, {"."}, {""},     {".cc"},  {"."}, {""},    {""},
-                                    {""},     {""},  {".bar"}, {".qux"}, {"."}, {".bar"}};
+                                         {""},     {""},  {".bar"}, {".qux"}, {"."}, {".bar"}};
   for (const auto& i : in) {
     auto a = i.extension();
     ASSERT_EQ(a.string(), out[&i - &in.front()].string()) << "wrong extension";
