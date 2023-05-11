@@ -3,11 +3,11 @@
 #include <cstdint>
 #include <cstring>
 #include <filesystem>
+#include <fstream>
 #include <functional>
 #include <limits>
 #include <memory>
 #include <ostream>
-#include <fstream>
 #include <random>
 #include <stdexcept>
 #include <string>
@@ -738,9 +738,8 @@ template <typename T> struct has_data : decltype(has_data_impl::test<T>(0)) {};
  * new directory if directory did not exist before hand.
  * */
 template <typename Container>
-typename std::enable_if<has_data<Container>::value, bool>::type save(
-    const std::string& fpath,
-    const Container& data = {}) {
+typename std::enable_if<has_data<Container>::value, bool>::type save(const std::string& fpath,
+                                                                     const Container& data = {}) {
   if (fpath.empty())
     return false;
 
@@ -796,13 +795,10 @@ inline std::vector<std::string> get_files(const std::string& root_dir) {
   return files;
 }
 
-template <typename TP>
-std::time_t to_time_t(TP tp)
-{
-    using namespace std::chrono;
-    auto sctp = time_point_cast<system_clock::duration>(tp - TP::clock::now()
-              + system_clock::now());
-    return system_clock::to_time_t(sctp);
+template <typename TP> std::time_t to_time_t(TP tp) {
+  using namespace std::chrono;
+  auto sctp = time_point_cast<system_clock::duration>(tp - TP::clock::now() + system_clock::now());
+  return system_clock::to_time_t(sctp);
 }
 
 } // namespace midgard
