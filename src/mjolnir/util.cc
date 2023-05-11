@@ -1,7 +1,6 @@
 #include "mjolnir/util.h"
 
 #include "baldr/tilehierarchy.h"
-#include <filesystem>
 #include "midgard/aabb2.h"
 #include "midgard/logging.h"
 #include "midgard/point2.h"
@@ -18,6 +17,7 @@
 #include "mjolnir/restrictionbuilder.h"
 #include "mjolnir/shortcutbuilder.h"
 #include "mjolnir/transitbuilder.h"
+#include <filesystem>
 
 #include <boost/algorithm/string/classification.hpp>
 #include <boost/algorithm/string/split.hpp>
