@@ -938,7 +938,6 @@ TEST(Standalone, PhonemesWithAltandDirection) {
   {
     GraphId node_id = BD_edge->endnode();
     auto tile = graph_reader.GetGraphTile(node_id);
-    const NodeInfo* node_info = tile->node(node_id);
 
     std::unordered_map<uint32_t, std::pair<uint8_t, std::string>> pronunciations;
     std::vector<SignInfo> signs = tile->GetSigns(BD_edge_id.id(), pronunciations);
@@ -981,7 +980,6 @@ TEST(Standalone, PhonemesWithAltandDirection) {
 
     node_id = DB_edge->endnode();
     tile = graph_reader.GetGraphTile(node_id);
-    node_info = tile->node(node_id);
 
     pronunciations.clear();
     signs.clear();
@@ -1026,7 +1024,6 @@ TEST(Standalone, PhonemesWithAltandDirection) {
     // more signs.  jeita wins.
     node_id = BC_edge->endnode();
     tile = graph_reader.GetGraphTile(node_id);
-    node_info = tile->node(node_id);
 
     pronunciations.clear();
     signs.clear();
@@ -1117,7 +1114,6 @@ TEST(Standalone, PhonemesWithAltandDirection) {
     // more signs.  should all be ipa
     node_id = DE_edge->endnode();
     graph_reader.GetGraphTile(node_id);
-    node_info = tile->node(node_id);
 
     pronunciations.clear();
     signs.clear();
@@ -1180,7 +1176,6 @@ TEST(Standalone, PhonemesWithAltandDirection) {
     // more signs.  should all be ipa
     node_id = ED_edge->endnode();
     graph_reader.GetGraphTile(node_id);
-    node_info = tile->node(node_id);
 
     pronunciations.clear();
     signs.clear();
