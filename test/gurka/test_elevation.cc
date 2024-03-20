@@ -220,9 +220,8 @@ TEST(Standalone, ElevationCompareToSkadi) {
     result.Parse(route_json.c_str());
 
     for (size_t leg_index = 0; leg_index < waypoints.size() - 1; ++leg_index) {
-      [[maybe_unused]] auto s =
-          rapidjson::get_child_optional(result, ("/trip/legs/" + std::to_string(leg_index) + "/shape")
-                                                    .c_str());
+      rapidjson::get_child_optional(result,
+                                    ("/trip/legs/" + std::to_string(leg_index) + "/shape").c_str());
 
       auto elevation =
           rapidjson::get_child_optional(result,
